@@ -16,12 +16,17 @@ namespace LinqReimplementation
     {
         static void Main(string[] args)
         {
+            //Check behavior
             Faker<Person> generatorPerson = getGeneratorPerson();
             List<Person> persons = generatorPerson.Generate(100);
 
-            IEnumerable<int> editedPersons = persons.Select(x=>x.Age);
 
-            foreach(int item in editedPersons)
+            IEnumerable<char> editedPersons = persons.SelectMany(x=>x.FullName);
+
+            List<string> nameList = new List<string>() { "Pranaya", "Kumar" };
+            IEnumerable<char> methodSyntax = nameList.SelectMany(x => x);
+
+            foreach (var item in editedPersons)
             {
                 Console.WriteLine(item + " ");
             }
